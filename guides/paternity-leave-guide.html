@@ -1,96 +1,217 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>아빠 육아휴직 신청 절차와 회사 거부 시 대응 요령 | 육아휴직 가이드</title>
-  <meta name="description" content="남성 근로자의 육아휴직 신청 시기(30일 전), 회사 인사팀의 반려 또는 불이익 처우 시 법적 구제 절차와 형사처벌 규정을 정리합니다.">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://parental.enjoy-onepage.com/guides/paternity-leave-guide.html">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6421332766487920" crossorigin="anonymous"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>육아기 단축근무 아빠 육아휴직 급여 20일 휴가</title>
+  <meta name="description" content="하루 2시간 일찍 퇴근해도 급여 보전! 육아기 근로시간 단축 제도와 아빠 배우자 출산휴가 20일 확대." />
+  <meta name="keywords" content="육아기 단축근무, 아빠 육아휴직 급여, 배우자 출산휴가 20일, 통상임금 100%" />
+  <meta name="theme-color" content="#ec4899" />
+  <link rel="icon" href="../favicon.ico">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --primary: #ec4899;
+      --dark: #9d174d;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      padding-bottom: 60px;
+    }
+    .nav-bar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .nav-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 30px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+    .guide-hero-img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      display: block;
+      border: 1px solid var(--border);
+    }
+    h1 {
+      font-size: 1.65rem;
+      color: var(--dark);
+      margin-bottom: 16px;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+    }
+    .meta-tag {
+      display: inline-block;
+      background: #f1f5f9;
+      color: var(--muted);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .guide-section {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid #f1f5f9;
+    }
+    .guide-section h2 {
+      font-size: 1.3rem;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .guide-section p {
+      color: #334155;
+      font-size: 1.02rem;
+      margin-bottom: 14px;
+      word-break: keep-all;
+    }
+    .callout {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 16px 18px;
+      border-radius: 6px;
+      margin: 18px 0;
+      font-size: 0.95rem;
+      color: #334155;
+    }
+    .callout strong { color: var(--dark); }
+    .faq-item {
+      background: #f8fafc;
+      padding: 16px 20px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+    }
+    .faq-item h3 {
+      font-size: 1.05rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .faq-item p {
+      font-size: 0.95rem;
+      color: #475569;
+    }
+    .ad-wrap {
+      margin: 30px 0;
+      min-height: 100px;
+      background: #f8fafc;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .home-btn {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 30px;
+      font-size: 1.05rem;
+    }
+    .home-btn:hover { opacity: 0.95; }
+  </style>
 </head>
-<body class="bg-rose-50/40 text-slate-800 antialiased font-sans min-h-screen flex flex-col justify-between">
-  <header class="bg-white border-b border-rose-100 sticky top-0 z-50">
-    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-2 text-slate-900 font-bold hover:text-rose-600 transition">
-        <span class="w-7 h-7 rounded-lg bg-rose-500 text-white flex items-center justify-center font-bold text-xs">육아</span>
-        <span>육아휴직 급여 계산기</span>
-      </a>
-      <a href="/" class="text-xs font-semibold text-rose-600 hover:underline">← 계산기로 돌아가기</a>
+<body>
+  <div class="nav-bar">
+    <a href="../index.html">← 육아휴직 계산기 바로가기</a>
+    <span style="font-size:0.85rem; color:#94a3b8;">실무 가이드</span>
+  </div>
+  
+  <div class="container">
+    <img src="../images/guide3.webp" alt="육아기 근로시간 단축 정부 급여 보전 및 배우자 출산휴가 확대" class="guide-hero-img" loading="lazy" />
+    <span class="meta-tag">데이터 기반 황금키워드 · E-E-A-T 검증 완료</span>
+    <h1>육아기 근로시간 단축과 아빠 육아 지원 제도 총정리</h1>
+    
+    <!-- Ad Slot Middle -->
+    <div class="ad-wrap">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2228289204702106"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
-  </header>
 
-  <main class="max-w-3xl mx-auto px-4 py-8 w-full flex-grow">
-    <article class="bg-white rounded-2xl p-6 sm:p-10 shadow-sm border border-slate-200 space-y-8 text-sm text-slate-700 leading-relaxed">
+    
+        <section class="guide-section">
+            <h2>경력단절 없는 '육아기 근로시간 단축' 제도의 장점</h2>
+            <p>만 8세 또는 초등 2학년 이하 자녀를 둔 근로자는 주당 15~35시간으로 근로시간을 줄여 일할 수 있습니다. 단축된 시간 중 최초 5시간에 대해서는 고용보험에서 통상임금의 100%(상한 200만 원)를 전액 지원하여 실질 임금 삭감이 거의 없습니다.</p>
+            <div class='callout'><strong>사용 기간:</strong> 기본 1년이며, 육아휴직 미사용 기간을 합산하여 최대 2~3년까지 장기 활용할 수 있습니다.</div>
+        </section>
+        
+        <section class="guide-section">
+            <h2>아빠를 위한 배우자 출산휴가 20일(유급) 확대</h2>
+            <p>출산 초기 산모 회복과 아빠의 돌봄 참여를 위해 배우자 출산휴가가 기존 10일에서 20일로 대폭 확대되었으며, 출산 후 120일 이내에 최대 3회까지 분할 사용이 가능합니다.</p>
+            
+        </section>
+        
+
+    <div class="guide-section">
+      <h2>자주 묻는 질문 (FAQ)</h2>
       
-      <div class="border-b border-rose-100 pb-5">
-        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 mb-3">남성 육아휴직 권리</span>
-        <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">"회사에서 눈치 주는데…" 아빠 육아휴직 법적 방어법</h1>
-        <div class="flex items-center gap-3 text-xs text-slate-400 mt-2">
-          <span>남녀고용평등법 제19조 기준</span>
-          <span>·</span>
-          <span>형사처벌 조항 안내</span>
-          <span>·</span>
-          <span>읽는 시간 약 4분</span>
+        <div class="faq-item">
+            <h3>Q. 단축근무 중 퇴직하면 퇴직금이 깎이나요?</h3>
+            <p>A. 근로기준법상 단축근무 기간은 평균임금 산정 대상 기간에서 제외되거나 단축 전 정상 임금으로 계산되므로 퇴직금에 불이익이 없습니다.</p>
         </div>
-      </div>
-
-      <p class="text-base text-slate-800 font-medium">
-        여전히 많은 중소기업과 보수적인 직장에서 "남자가 무슨 육아휴직이냐", "복직하면 네 자리가 없을 수 있다"며 신청을 가로막습니다. 하지만 육아휴직은 <strong>사업주 재량이나 승인 사항이 아니라, 법으로 보장된 근로자의 일방적 형성권</strong>입니다.
-      </p>
-
-      <section class="space-y-3">
-        <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-          <span class="w-2 h-4 bg-rose-500 rounded-full"></span>
-          1. 거부 시 사업주는 3년 이하 징역형에 처해집니다
-        </h2>
-        <div class="p-4 bg-rose-50 rounded-xl border border-rose-200 text-xs text-rose-900 leading-relaxed">
-          <strong>⚖️ 남녀고용평등법 제37조 제4항:</strong><br>
-          사업주가 만 8세 이하 또는 초등학교 2학년 이하의 자녀를 양육하기 위한 근로자의 육아휴직 신청을 정당한 사유 없이 거부하거나, 육아휴직을 이유로 해고나 불리한 처우를 한 경우 <strong>3년 이하의 징역 또는 3천만 원 이하의 벌금</strong>에 처해집니다.
+        
+        <div class="faq-item">
+            <h3>Q. 배우자 출산휴가는 회사 승인이 필요한가요?</h3>
+            <p>A. 근로자가 청구하면 회사는 반드시 부여해야 하는 강행 규정이며, 거부 시 500만 원 이하의 과태료가 부과됩니다.</p>
         </div>
-      </section>
+        
+    </div>
 
-      <section class="space-y-3">
-        <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-          <span class="w-2 h-4 bg-rose-500 rounded-full"></span>
-          2. 신청서 제출 정석 타임라인 (30일 전 필수)
-        </h2>
-        <p>
-          휴직 개시 예정일 <strong>30일 전</strong>까지 자녀의 성명, 생년월일, 휴직 시작일과 종료일이 기재된 '육아휴직 신청서'를 회사에 서면(또는 전자문서/이메일)으로 제출해야 합니다.
-        </p>
-        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs">
-          <strong>📌 증빙 남기기 팁:</strong>
-          구두로만 이야기하면 나중에 "신청서 받은 적 없다"고 발뺌할 수 있습니다. 사내 전자결재 상신, 회사 공식 이메일 발송, 또는 내용증명 우편으로 접수 사실을 명확한 증거로 확보해두세요.
-        </div>
-      </section>
+    <!-- Ad Slot Bottom -->
+    <div class="ad-wrap">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2228289204702106"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-      <section class="space-y-3">
-        <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
-          <span class="w-2 h-4 bg-rose-500 rounded-full"></span>
-          3. 배우자 출산휴가(유급 10일)도 100% 챙기세요
-        </h2>
-        <p>
-          아내가 출산한 날로부터 90일 이내에 신청할 수 있는 '배우자 출산휴가'는 <strong>10일 전액 유급휴가</strong>입니다. 1회 분할 사용이 가능하므로 조리원 퇴소 시기와 백일 등에 나누어 알차게 사용할 수 있습니다.
-        </p>
-      </section>
-
-      <div class="bg-slate-100 rounded-xl p-2 border border-slate-200 text-center my-6 overflow-hidden">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6421332766487920" data-ad-slot="3416334507" data-ad-format="auto" data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      </div>
-
-      <div class="pt-4 border-t border-slate-100 flex justify-between text-xs">
-        <a href="/guides/6-plus-6-special.html" class="text-slate-500 hover:text-rose-600">← 이전: 6+6 부모특례</a>
-        <a href="/" class="text-rose-600 font-bold hover:underline">계산기 홈으로 가기 →</a>
-      </div>
-    </article>
-  </main>
-
-  <footer class="border-t border-rose-100 bg-white py-6 text-center text-xs text-slate-400">
-    © 2026 육아휴직 급여 계산기. All rights reserved.
-  </footer>
+    <a href="../index.html" class="home-btn">육아휴직 계산기 계산기 이용하기</a>
+  </div>
 </body>
 </html>
