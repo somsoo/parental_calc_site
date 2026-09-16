@@ -24,44 +24,57 @@
 <link href="/icon.png" rel="apple-touch-icon"/>
 <script src="https://cdn.tailwindcss.com"></script>
 <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebApplication",
-        "@id": "https://parental.enjoy-onepage.com/#webapp",
-        "name": "육아휴직 급여 계산기",
-        "url": "https://parental.enjoy-onepage.com/",
-        "applicationCategory": "FinanceApplication",
-        "operatingSystem": "All",
-        "browserRequirements": "Requires JavaScript. Requires HTML5.",
-        "description": "2026년 정부 육아휴직 급여 상한액 인상(월 최대 250만원)과 6+6 부모맞돌봄 특례, 사후지급금 폐지 개정안을 완벽 반영한 모의계산기입니다.",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "KRW" }
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://parental.enjoy-onepage.com/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "2026년 육아휴직 급여 상한액은 얼마인가요?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "개정안에 따라 첫 1~3개월은 월 최대 250만 원, 4~6개월은 월 최대 200만 원, 7개월 이후는 월 최대 160만 원으로 대폭 인상되었습니다."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "사후지급금 제도는 어떻게 바뀌었나요?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "복직 후 6개월 뒤에 지급하던 25% 사후지급금 제도가 전면 폐지되어, 이제 휴직 기간 중에 급여 전액(100%)을 매달 즉시 수령할 수 있습니다."
-            }
-          }
-        ]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://parental.enjoy-onepage.com/#webapp",
+      "name": "내 월급 기준 육아휴직 급여 얼마 받을까?",
+      "url": "https://parental.enjoy-onepage.com/",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "description": "2026년 육아휴직 급여 상한액(월 최대 250만원) 인상과 6+6 부모맞돌봄 특례, 사후지급금 폐지 개편안을 실시간 계산합니다.",
+      "image": "https://parental.enjoy-onepage.com/og-image.png",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW"
       }
-    ]
-  }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://parental.enjoy-onepage.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "내 월급 기준 육아휴직 급여 얼마 받을까? 이용 시 비용이 발생하나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "아닙니다. 내 월급 기준 육아휴직 급여 얼마 받을까?는 회원가입이나 결제 없이 누구나 브라우저에서 100% 무료로 무제한 이용할 수 있습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "입력한 개인정보나 데이터가 서버에 저장되나요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "절대 저장되지 않습니다. 모든 연산과 데이터 처리는 사용자의 기기 브라우저 메모리 내에서만 로컬 연산되며 외부 서버로 전송되지 않습니다."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "스마트폰 모바일 브라우저에서도 사용 가능한가요?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "네, 아이폰(Safari), 안드로이드(Chrome, 삼성인터넷) 등 모든 모바일 기기 화면에 최적화된 반응형 웹앱으로 편리하게 이용하실 수 있습니다."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 <link href="https://parental.enjoy-onepage.com/rss.xml" rel="alternate" title="육아휴직 급여 계산기 | 2026년 250만원 인상 및 6+6 특례 RSS Feed" type="application/rss+xml"/>
 <link href="https://parental.enjoy-onepage.com/sitemap.xml" rel="sitemap" title="Sitemap" type="application/xml"/>
