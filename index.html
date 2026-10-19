@@ -530,7 +530,7 @@
         let type = getSelectedType();
         if (!RULES[type]) type = 'standard';
         const rule = RULES[type];
-        const wage = parseFloat(wageInput.value) || 0;
+        const wage = Math.max(0, parseFloat(wageInput.value) || 0);
         const totalMonths = parseInt(monthsSelect.value, 10) || 12;
 
         wageFormatted.textContent = `${formatNumber(wage)}원`;
@@ -600,7 +600,7 @@
 
       document.querySelectorAll('.quick-add').forEach(btn => {
         btn.addEventListener('click', () => {
-          const current = parseFloat(wageInput.value) || 0;
+          const current = Math.max(0, parseFloat(wageInput.value) || 0);
           wageInput.value = current + parseFloat(btn.dataset.add);
           calculate();
         });
