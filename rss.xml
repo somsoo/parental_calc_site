@@ -1,25 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>육아휴직 급여 계산기 | 월 250만원 상한 및 6+6 특례</title>
-    <link>https://parental.enjoy-onepage.com/</link>
-    <description>2026년 기준 육아휴직 급여(1~3개월 월 최대 250만원, 4~6개월 200만원, 7개월째부터 통상임금 80%·최대 160만원)와 6+6 부모 특례, 한부모 특례를 계산합니다.</description>
-    <language>ko-KR</language>
-    <lastBuildDate>Thu, 01 Oct 2026 06:04:52 +0900</lastBuildDate>
-    <atom:link href="https://parental.enjoy-onepage.com/rss.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>육아휴직 급여 계산기 | 월 250만원 상한 및 6+6 특례</title>
-      <link>https://parental.enjoy-onepage.com/</link>
-      <guid isPermaLink="true">https://parental.enjoy-onepage.com/</guid>
-      <description>2026년 기준 육아휴직 급여(1~3개월 월 최대 250만원, 4~6개월 200만원, 7개월째부터 통상임금 80%·최대 160만원)와 6+6 부모 특례, 한부모 특례를 계산합니다.</description>
-      <pubDate>Sat, 12 Sep 2026 00:00:00 +0900</pubDate>
-    </item>
-    <item>
-      <title>개인정보처리방침 | 육아휴직 급여 계산기</title>
-      <link>https://parental.enjoy-onepage.com/privacy.html</link>
-      <guid isPermaLink="true">https://parental.enjoy-onepage.com/privacy.html</guid>
-      <description>육아휴직 급여 계산기의 개인정보처리방침입니다. 사용자가 입력한 급여 데이터는 서버로 전송되지 않으며 기기 내에서만 연산됩니다.</description>
-      <pubDate>Sat, 12 Sep 2026 01:10:00 +0900</pubDate>
-    </item>
-  </channel>
+<channel>
+  <title>육아휴직 급여 계산기 | 250만원 상한·6+6 특례</title>
+  <link>https://parental.enjoy-onepage.com/</link>
+  <description>2026년 상한액 250만원 계단식 육아휴직 급여와 6+6 부모 특례 모의계산기입니다.</description>
+  <language>ko-KR</language>
+  <atom:link href="https://parental.enjoy-onepage.com/rss.xml" rel="self" type="application/rss+xml" />
+  <lastBuildDate>Sun, 25 Oct 2026 23:18:34 +0000</lastBuildDate>
+  <item>
+    <title>육아휴직 4대보험 납부유예·연말정산 배우자 공제 정리</title>
+    <link>https://parental.enjoy-onepage.com/guide-tax-insurance.html</link>
+    <guid isPermaLink="true">https://parental.enjoy-onepage.com/guide-tax-insurance.html</guid>
+    <description>육아휴직 기간 중 건강보험료 납부유예, 국민연금 납부예외 신청과 비과세 연말정산 기준을 안내합니다.</description>
+    <pubDate>Mon, 26 Oct 2026 08:18:35 +0900</pubDate>
+  </item>
+  <item>
+    <title>육아휴직 1년 6개월(18개월) 연장 조건 및 급여 계산기</title>
+    <link>https://parental.enjoy-onepage.com/guide-18months.html</link>
+    <guid isPermaLink="true">https://parental.enjoy-onepage.com/guide-18months.html</guid>
+    <description>남녀고용평등법 제19조에 따른 육아휴직 18개월 연장 요건과 13~18개월차 급여를 계산합니다.</description>
+    <pubDate>Mon, 26 Oct 2026 08:18:35 +0900</pubDate>
+  </item>
+  <item>
+    <title>한부모 육아휴직 급여 계산기 | 1~3개월 월 300만 상한</title>
+    <link>https://parental.enjoy-onepage.com/guide-single-parent.html</link>
+    <guid isPermaLink="true">https://parental.enjoy-onepage.com/guide-single-parent.html</guid>
+    <description>한부모가족지원법 대상자의 육아휴직 급여(1~3개월 상한 300만원, 최대 18개월)를 월별로 계산합니다.</description>
+    <pubDate>Mon, 26 Oct 2026 08:18:35 +0900</pubDate>
+  </item>
+  <item>
+    <title>6+6 부모육아휴직제 계산기 | 월 최대 450만원 상한표</title>
+    <link>https://parental.enjoy-onepage.com/guide-6plus6.html</link>
+    <guid isPermaLink="true">https://parental.enjoy-onepage.com/guide-6plus6.html</guid>
+    <description>자녀 생후 18개월 내 부모 모두 육아휴직 시 1~6개월 최대 250~450만원을 받는 6+6 특례 계산기입니다.</description>
+    <pubDate>Mon, 26 Oct 2026 08:18:35 +0900</pubDate>
+  </item>
+  <item>
+    <title>월급 450만원 이상 육아휴직 급여 | 상한액 최대치 계산</title>
+    <link>https://parental.enjoy-onepage.com/wage-450.html</link>
+    <guid isPermaLink="true">https://parental.enjoy-onepage.com/wage-450.html</guid>
+    <description>통상임금 450만원 이상 최고 상한액 구간(6+6 특례 1년 2,960만원·일반 2,310만원)을 비교합니다.</description>
+    <pubDate>Mon, 26 Oct 2026 08:18:35 +0900</pubDate>
+  </item>
+  <item>
+    <title>월급 400만원 육아휴직 급여 | 6+6 특례 수령액 계산</title>
+    <link>https://parental.enjoy-onepage.com/wage-400.html</link>
+    <guid isPermaLink="true">https://parental.enjoy-onepage.com/wage-400.html</guid>
+    <description>월 통상임금 400만원 기준 6+6 부모 특례(연 2,910만원)와 일반 육아휴직 수령액 차이를 계산합니다.</description>
+    <pubDate>Mon, 26 Oct 2026 08:18:35 +0900</pubDate>
+  </item>
+  <item>
+    <title>월급 350만원 육아휴직 급여 | 6+6 특례·일반 비교표</title>
+    <link>https://parental.enjoy-onepage.com/wage-350.html</link>
+    <guid isPermaLink="true">https://parental.enjoy-onepage.com/wage-350.html</guid>
+    <description>월 통상임금 350만원 기준 일반 육아휴직과 6+6 부모 특례(연 2,810만원) 월별 지급액을 계산합니다.</description>
+    <pubDate>Mon, 26 Oct 2026 08:18:35 +0900</pubDate>
+  </item>
+  <item>
+    <title>월급 300만원 육아휴직 급여 | 일반·6+6 수령액 비교</title>
+    <link>https://parental.enjoy-onepage.com/wage-300.html</link>
+    <guid isPermaLink="true">https://parental.enjoy-onepage.com/wage-300.html</guid>
+    <description>월 통상임금 300만원 기준 일반 육아휴직(2,310만원)과 6+6 특례(2,660만원) 월별 수령액표입니다.</description>
+    <pubDate>Mon, 26 Oct 2026 08:18:35 +0900</pubDate>
+  </item>
+  <item>
+    <title>월급 250만원 육아휴직 급여 | 일반 vs 6+6 비교표</title>
+    <link>https://parental.enjoy-onepage.com/wage-250.html</link>
+    <guid isPermaLink="true">https://parental.enjoy-onepage.com/wage-250.html</guid>
+    <description>월 통상임금 250만원 육아휴직 급여(일반 2,310만원 vs 6+6 특례 2,460만원) 차이를 비교합니다.</description>
+    <pubDate>Mon, 26 Oct 2026 08:18:34 +0900</pubDate>
+  </item>
+  <item>
+    <title>월급 200만원 육아휴직 급여 | 일반·6+6 월별 수령액표</title>
+    <link>https://parental.enjoy-onepage.com/wage-200.html</link>
+    <guid isPermaLink="true">https://parental.enjoy-onepage.com/wage-200.html</guid>
+    <description>월 통상임금 200만원 기준 일반 육아휴직(연 2,160만원)과 6+6 부모 특례 월별 지급액을 계산합니다.</description>
+    <pubDate>Mon, 26 Oct 2026 08:18:34 +0900</pubDate>
+  </item>
+  <item>
+    <title>개인정보처리방침 | 육아휴직 급여 계산기</title>
+    <link>https://parental.enjoy-onepage.com/privacy.html</link>
+    <guid isPermaLink="true">https://parental.enjoy-onepage.com/privacy.html</guid>
+    <description>육아휴직 급여 계산기의 개인정보처리방침입니다. 사용자가 입력한 급여 데이터는 서버로 전송되지 않으며 기기 내에서만 연산됩니다.</description>
+    <pubDate>Fri, 11 Sep 2026 12:06:33 +0900</pubDate>
+  </item>
+</channel>
 </rss>
