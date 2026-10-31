@@ -1,0 +1,28 @@
+{
+ "app": "parental_calc_site",
+ "host": "parental.enjoy-onepage.com",
+ "watch": false,
+ "status": "unverified",
+ "checked": "",
+ "soft_days": 60,
+ "hard_days": 120,
+ "grace_days": 31,
+ "hide": [],
+ "pages": [
+  "guide-18months.html",
+  "guide-6plus6.html",
+  "guide-single-parent.html",
+  "guide-tax-insurance.html",
+  "index.html",
+  "wage-200.html",
+  "wage-250.html",
+  "wage-300.html",
+  "wage-350.html",
+  "wage-400.html",
+  "wage-450.html"
+ ],
+ "values": {},
+ "sources": {},
+ "valid_until": "2026-12-31",
+ "note": "이 페이지의 금액·비율은 2026년 기준"
+}
