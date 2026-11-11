@@ -151,6 +151,34 @@
   .ad-bottom { min-height: 280px !important; }
   .ad-bottom ins { min-height: 280px !important; }
 </style>
+<style id="parental-toolbar-style">
+  .parental-action-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  @media (max-width: 640px) {
+    .parental-action-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  .parental-action-btn {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.6rem 0.5rem;
+    font-size: 0.775rem;
+    font-weight: 700;
+    border-radius: 0.75rem;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+  }
+</style>
 <!-- KIRO:VALUES START -->
 <script type="application/json" id="kiro-values">{"app":"parental_calc_site","valid_until":"2026-12-31","soft_days":60,"hard_days":120,"grace_days":31,"status":"unverified","note":"이 페이지의 금액·비율은 2026년 기준","values":{}}</script>
 <script>/* Kiro value guard v1 (2026-11-01). Values come from #kiro-values, written by the home server's value watcher.
@@ -325,6 +353,18 @@
         </button>
 </div>
 </div>
+        <!-- 3-Action Toolbar -->
+        <div class="parental-action-grid">
+          <button class="parental-action-btn bg-rose-500 hover:bg-rose-600 text-white shadow-sm" onclick="downloadParentalPNG()" type="button">
+            <span>📥</span> 급여 명세서 PNG 저장
+          </button>
+          <button class="parental-action-btn bg-slate-100 hover:bg-slate-200 text-slate-700" onclick="copyMasterResult()" type="button">
+            <span>📋</span> 정산 요약 복사
+          </button>
+          <button class="parental-action-btn bg-slate-100 hover:bg-slate-200 text-slate-700" onclick="copyShareUrl()" type="button">
+            <span>🔗</span> 내 결과 링크 복사
+          </button>
+        </div>
 </section>
 <main class="max-w-4xl mx-auto px-4 py-4 w-full flex-grow">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
@@ -968,31 +1008,307 @@
     클립보드에 복사되었습니다!
   </div>
   <script>
-    function copyMasterResult() {
-      var resEl = document.getElementById('result') || document.getElementById('resultCard') || document.querySelector('.result-box') || document.querySelector('main');
-      var text = resEl ? (resEl.innerText || resEl.textContent) : '내 월급 기준 육아휴직 급여 얼마 받을까? 계산 결과';
-      var shareText = text.trim() + "\n\n👉 내 월급 기준 육아휴직 급여 얼마 받을까? 바로가기: " + window.location.href;
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(shareText).then(showMasterToast, function () { window.showToastNotification('복사하지 못했습니다. 결과를 직접 선택해 복사하세요.'); });
+        function copyMasterResult() {
+      const type = document.getElementById('typeBadge') ? document.getElementById('typeBadge').textContent.trim() : '일반 육아휴직';
+      const wage = document.getElementById('wageFormatted') ? document.getElementById('wageFormatted').textContent.trim() : '0원';
+      const period = document.getElementById('periodBadge') ? document.getElementById('periodBadge').textContent.trim() : '';
+      const m1Label = document.getElementById('resM1to3Label') ? document.getElementById('resM1to3Label').textContent.trim() : '1~3개월차';
+      const m1Val = document.getElementById('resM1to3') ? document.getElementById('resM1to3').textContent.trim() : '0원';
+      const m2Label = document.getElementById('resM4to6Label') ? document.getElementById('resM4to6Label').textContent.trim() : '4~6개월차';
+      const m2Val = document.getElementById('resM4to6') ? document.getElementById('resM4to6').textContent.trim() : '0원';
+      const total = document.getElementById('resTotalPay') ? document.getElementById('resTotalPay').textContent.trim() : '0';
+
+      const monthsEl = document.getElementById('leaveMonths');
+      const totalMonths = monthsEl ? parseInt(monthsEl.value, 10) || 12 : 12;
+      const wageInput = document.getElementById('monthlyWage');
+      const wageVal = wageInput ? Math.max(0, parseFloat(wageInput.value) || 0) : 0;
+
+      let lines = [
+        '[2026 육아휴직 급여 모의정산 결과]',
+        '• 적용 제도: ' + type,
+        '• 월 통상임금: ' + wage,
+        '• 휴직 기간: ' + period,
+        '• ' + m1Label + ': ' + m1Val,
+        '• ' + m2Label + ': ' + m2Val
+      ];
+
+      if (totalMonths >= 7) {
+        const m7pay = wageVal > 0 ? Math.round(Math.max(700000, Math.min(wageVal * 0.8, 1600000))) : 0;
+        lines.push('• 7개월차 이후: 월 ' + m7pay.toLocaleString('ko-KR') + '원');
+      }
+
+      lines.push('• 총 예상 수급액: ' + total + '원');
+      lines.push('👉 계산기: ' + window.location.href);
+
+      const text = lines.join('\n');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+          showMasterToast('정산 요약이 복사되었습니다! 📋');
+        }).catch(function() {
+          fallbackMasterCopy(text);
+        });
       } else {
-        var ta = document.createElement('textarea');
-        ta.value = shareText;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-        showMasterToast();
+        fallbackMasterCopy(text);
       }
     }
-    function showMasterToast() {
+
+    function fallbackMasterCopy(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showMasterToast('정산 요약이 복사되었습니다! 📋');
+      } catch (e) {
+        showMasterToast('복사하지 못했습니다. 결과를 직접 선택해 복사하세요.');
+      }
+      document.body.removeChild(ta);
+    }
+
+    function copyShareUrl() {
+      const url = window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function() {
+          showMasterToast('계산 결과 링크가 복사되었습니다! 🔗');
+        }).catch(function() {
+          fallbackMasterCopy(url);
+        });
+      } else {
+        fallbackMasterCopy(url);
+      }
+    }
+
+    function showMasterToast(msg) {
       var t = document.getElementById('masterToast');
       if (!t) return;
+      if (msg) t.textContent = msg;
       t.classList.remove('opacity-0', 'pointer-events-none');
       t.classList.add('opacity-100');
       setTimeout(function() {
         t.classList.remove('opacity-100');
         t.classList.add('opacity-0', 'pointer-events-none');
       }, 2200);
+    }
+
+    function downloadParentalPNG() {
+      const type = document.getElementById('typeBadge') ? document.getElementById('typeBadge').textContent.trim() : '일반 육아휴직';
+      const wage = document.getElementById('wageFormatted') ? document.getElementById('wageFormatted').textContent.trim() : '0원';
+      const period = document.getElementById('periodBadge') ? document.getElementById('periodBadge').textContent.trim() : '';
+      const total = document.getElementById('resTotalPay') ? document.getElementById('resTotalPay').textContent.trim() : '0';
+
+      const rows = [];
+      const trs = document.querySelectorAll('#payoutTableBody tr');
+      trs.forEach(function(tr) {
+        const tds = tr.querySelectorAll('td');
+        if (tds.length >= 4) {
+          rows.push({
+            period: tds[0].innerText.replace(/\s+/g, ' ').trim(),
+            rate: tds[1].innerText.trim(),
+            cap: tds[2].innerText.trim(),
+            pay: tds[3].innerText.trim()
+          });
+        }
+      });
+
+      const canvas = document.createElement('canvas');
+      const W = 640;
+      const H = Math.max(760, 480 + rows.length * 32);
+      const scale = 2;
+      canvas.width = W * scale;
+      canvas.height = H * scale;
+      const ctx = canvas.getContext('2d');
+      ctx.scale(scale, scale);
+
+      function roundRect(x, y, w, h, r, fill, stroke) {
+        ctx.beginPath();
+        ctx.moveTo(x + r, y);
+        ctx.lineTo(x + w - r, y);
+        ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+        ctx.lineTo(x + w, y + h - r);
+        ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+        ctx.lineTo(x + r, y + h);
+        ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+        ctx.lineTo(x, y + r);
+        ctx.quadraticCurveTo(x, y, x + r, y);
+        ctx.closePath();
+        if (fill) ctx.fill();
+        if (stroke) ctx.stroke();
+      }
+
+      // Background
+      ctx.fillStyle = '#f8fafc';
+      ctx.fillRect(0, 0, W, H);
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(0, 0, W, H);
+
+      // Header Banner
+      ctx.fillStyle = '#0f172a';
+      roundRect(20, 20, 600, 95, 12, true, false);
+
+      ctx.fillStyle = '#f43f5e';
+      roundRect(36, 36, 130, 22, 6, true, false);
+      ctx.font = 'bold 10px sans-serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center';
+      ctx.fillText('2026 고용보험 법령 기준', 101, 51);
+
+      ctx.font = 'bold 20px sans-serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'left';
+      ctx.fillText('육아휴직 급여 모의정산 명세서', 36, 82);
+
+      ctx.font = '11px sans-serif';
+      ctx.fillStyle = '#94a3b8';
+      ctx.textAlign = 'right';
+      ctx.fillText('고용보험법 시행령 제95조·제95조의3 기준', 604, 82);
+
+      // Highlight Box
+      ctx.fillStyle = '#fff1f2';
+      ctx.strokeStyle = '#fecdd3';
+      ctx.lineWidth = 1.5;
+      roundRect(20, 127, 600, 92, 12, true, true);
+
+      ctx.font = 'bold 12px sans-serif';
+      ctx.fillStyle = '#9f1239';
+      ctx.textAlign = 'left';
+      ctx.fillText('총 예상 육아휴직 급여 수급액', 38, 153);
+
+      ctx.font = 'bold 30px sans-serif';
+      ctx.fillStyle = '#e11d48';
+      ctx.fillText(total + ' 원', 38, 195);
+
+      ctx.font = 'bold 12px sans-serif';
+      ctx.fillStyle = '#be123c';
+      ctx.textAlign = 'right';
+      ctx.fillText(period, 602, 195);
+
+      // Conditions Card
+      ctx.fillStyle = '#ffffff';
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1;
+      roundRect(20, 231, 600, 64, 10, true, true);
+
+      ctx.font = '11px sans-serif';
+      ctx.fillStyle = '#64748b';
+      ctx.textAlign = 'left';
+      ctx.fillText('적용 제도', 36, 252);
+      ctx.font = 'bold 12px sans-serif';
+      ctx.fillStyle = '#0f172a';
+      ctx.fillText(type, 36, 275);
+
+      ctx.strokeStyle = '#f1f5f9';
+      ctx.beginPath();
+      ctx.moveTo(230, 243);
+      ctx.lineTo(230, 283);
+      ctx.stroke();
+
+      ctx.font = '11px sans-serif';
+      ctx.fillStyle = '#64748b';
+      ctx.fillText('월 통상임금 (세전)', 246, 252);
+      ctx.font = 'bold 12px sans-serif';
+      ctx.fillStyle = '#0f172a';
+      ctx.fillText(wage, 246, 275);
+
+      ctx.beginPath();
+      ctx.moveTo(435, 243);
+      ctx.lineTo(435, 283);
+      ctx.stroke();
+
+      ctx.font = '11px sans-serif';
+      ctx.fillStyle = '#64748b';
+      ctx.fillText('휴직 기간', 451, 252);
+      ctx.font = 'bold 12px sans-serif';
+      ctx.fillStyle = '#0f172a';
+      ctx.fillText(period, 451, 275);
+
+      // Breakdown Table
+      let curY = 315;
+      ctx.font = 'bold 13px sans-serif';
+      ctx.fillStyle = '#334155';
+      ctx.textAlign = 'left';
+      ctx.fillText('구간별 지급 기준 및 월 수령액 상세', 24, curY);
+
+      curY += 12;
+      ctx.fillStyle = '#f1f5f9';
+      roundRect(20, curY, 600, 30, 6, true, false);
+
+      ctx.font = 'bold 11px sans-serif';
+      ctx.fillStyle = '#475569';
+      ctx.textAlign = 'left';
+      ctx.fillText('휴직 기간', 36, curY + 19);
+      ctx.textAlign = 'center';
+      ctx.fillText('지급 비율', 230, curY + 19);
+      ctx.textAlign = 'right';
+      ctx.fillText('월 상한액', 430, curY + 19);
+      ctx.fillText('내 월 지급액', 604, curY + 19);
+
+      curY += 30;
+
+      rows.forEach(function(r, idx) {
+        if (idx % 2 === 1) {
+          ctx.fillStyle = '#fcfdfe';
+          ctx.fillRect(20, curY, 600, 30);
+        }
+        ctx.strokeStyle = '#f1f5f9';
+        ctx.beginPath();
+        ctx.moveTo(20, curY + 30);
+        ctx.lineTo(620, curY + 30);
+        ctx.stroke();
+
+        ctx.font = '11px sans-serif';
+        ctx.fillStyle = '#1e293b';
+        ctx.textAlign = 'left';
+        ctx.fillText(r.period, 36, curY + 19);
+
+        ctx.fillStyle = '#64748b';
+        ctx.textAlign = 'center';
+        ctx.fillText(r.rate, 230, curY + 19);
+
+        ctx.textAlign = 'right';
+        ctx.fillText(r.cap, 430, curY + 19);
+
+        ctx.font = 'bold 11px sans-serif';
+        ctx.fillStyle = '#e11d48';
+        ctx.fillText(r.pay, 604, curY + 19);
+
+        curY += 30;
+      });
+
+      curY += 15;
+
+      // Notice Box
+      ctx.fillStyle = '#ffffff';
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1;
+      roundRect(20, curY, 600, 60, 8, true, true);
+
+      ctx.font = '10px sans-serif';
+      ctx.fillStyle = '#64748b';
+      ctx.textAlign = 'left';
+      ctx.fillText('• 2025년부터 육아휴직 급여 사후지급금(복직 후 지급) 제도가 전면 폐지되어 전액 매월 지급됩니다.', 32, curY + 23);
+      ctx.fillText('• 본 계산은 모의 산정 결과이며, 실제 지급액은 관할 고용센터 수급자격 심사에 따라 달라질 수 있습니다.', 32, curY + 43);
+
+      curY += 75;
+
+      // Footer
+      const d = new Date();
+      const dateStr = d.getFullYear() + '. ' + String(d.getMonth() + 1).padStart(2, '0') + '. ' + String(d.getDate()).padStart(2, '0') + '.';
+      ctx.font = '10px sans-serif';
+      ctx.fillStyle = '#94a3b8';
+      ctx.textAlign = 'left';
+      ctx.fillText('발행일자: ' + dateStr, 24, curY);
+      ctx.textAlign = 'right';
+      ctx.fillText('parental.enjoy-onepage.com', 616, curY);
+
+      const link = document.createElement('a');
+      link.download = '육아휴직_급여_산정_명세서.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      showMasterToast('명세서 PNG가 저장되었습니다! 📥');
     }
   </script>
 
